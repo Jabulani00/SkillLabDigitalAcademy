@@ -1,0 +1,53 @@
+:root {
+  /* Colors based on the logo gradient (blue/purple) */
+  --primary-color: #4cc3ff;
+  --secondary-color: #5f5eff;
+  --gradient-start: #4cc3ff;
+  --gradient-end: #5f5eff;
+
+  /* Glassmorphism effect colors */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.25);
+
+  /* Font settings */
+  --font-family: 'Poppins', sans-serif;
+  --text-color: #ffffff;
+  --accent-color: #0fffcf;
+  --blur-amount: 15px;
+  --border-radius: 20px;
+  --transition-speed: 0.3s;
+}
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  padding: 2rem;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: all var(--transition-speed) ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 40px 0 var(--glass-shadow);
+}
+
+.button-primary {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  border: none;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 999px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+.button-primary:hover {
+  filter: brightness(1.1);
+}

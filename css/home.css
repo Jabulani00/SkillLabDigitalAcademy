@@ -1,0 +1,218 @@
+:root {
+            /* Colors based on the logo gradient (blue/purple) */
+            --primary-color: #4cc3ff;
+            --secondary-color: #5f5eff;
+            --gradient-start: #4cc3ff;
+            --gradient-end: #5f5eff;
+
+            /* Glassmorphism effect colors */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: rgba(0, 0, 0, 0.25);
+
+            /* Font settings */
+            --font-family: 'Poppins', sans-serif;
+            --text-color: #ffffff;
+            --accent-color: #0fffcf;
+            --blur-amount: 15px;
+            --border-radius: 20px;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            box-shadow: 0 8px 32px 0 var(--glass-shadow);
+            padding: 1.5rem;
+            color: var(--text-color);
+            font-family: var(--font-family);
+            transition: all var(--transition-speed) ease;
+            margin: 0.5rem;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px 0 var(--glass-shadow);
+        }
+
+        .button-primary {
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            border: none;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 999px;
+            font-family: var(--font-family);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(var(--blur-amount));
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-color) !important;
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .course-card {
+            height: 100%;
+            transition: all var(--transition-speed) ease;
+            font-size: 0.9rem;
+            padding: 1.5rem !important;
+        }
+
+        .course-card h4 {
+            font-size: 1.2rem;
+        }
+
+        .course-card p {
+            font-size: 0.85rem;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stats-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amount));
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(76, 195, 255, 0.2), rgba(95, 94, 255, 0.2));
+            backdrop-filter: blur(var(--blur-amount));
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+        }
+
+        .hero-section img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .hero-section img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .course-card {
+                margin: 0.25rem;
+                padding: 1rem !important;
+            }
+            
+            .course-card h4 {
+                font-size: 1rem;
+            }
+            
+            .course-card p {
+                font-size: 0.8rem;
+            }
+            
+            .course-card ul {
+                font-size: 0.8rem;
+            }
+        }

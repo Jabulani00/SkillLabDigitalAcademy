@@ -1,0 +1,45 @@
+footer {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    border-top: 1px solid var(--glass-border);
+}
+
+footer h5 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+footer h6 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+footer p {
+    color: var(--text-color);
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+footer .text-light {
+    transition: color var(--transition-speed) ease;
+}
+
+footer .text-light:hover {
+    color: var(--accent-color) !important;
+    text-decoration: none;
+}
+
+footer .social-links a {
+    margin-right: 1rem;
+    transition: color var(--transition-speed) ease;
+}
+
+footer .social-links a:hover {
+    color: var(--accent-color) !important;
+}
+
+footer hr {
+    border-color: var(--glass-border);
+}

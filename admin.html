@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iSkill Academy - Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="container mt-5">
+        <div class="admin-container">
+            <h2 class="text-center mb-4">Admin Dashboard</h2>
+            <div class="glass-card mb-4">
+                <h3>Pending Applications</h3>
+                <div id="pendingApplications"></div>
+            </div>
+            
+            <div class="glass-card mb-4">
+                <h3>Approved Applications</h3>
+                <div id="approvedApplications"></div>
+            </div>
+
+            <div class="glass-card">
+                <h3>Rejected Applications</h3>
+                <div id="rejectedApplications"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
