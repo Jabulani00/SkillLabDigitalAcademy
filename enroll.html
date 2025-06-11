@@ -21,8 +21,7 @@
                 <h3 id="selected-course">Selected Course: </h3>
                 <p id="course-price">Price: </p>
             </div>
-            
-            <form id="enrollmentForm" class="needs-validation" novalidate>
+              <form id="enrollmentForm" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName" class="form-label">First Name</label>
@@ -34,14 +33,47 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" required>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="idType" class="form-label">Identification Type</label>
+                        <select class="form-select" id="idType" required>
+                            <option value="">Choose...</option>
+                            <option value="za_id">South African ID</option>
+                            <option value="passport">Passport (International Students)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="idNumber" class="form-label">ID/Passport Number</label>
+                        <input type="text" class="form-control" id="idNumber" required>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" required>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select class="form-select" id="gender" required>
+                            <option value="">Choose...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="prefer_not">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nationality" class="form-label">Nationality</label>
+                        <input type="text" class="form-control" id="nationality" required>
+                    </div>
                 </div>
 
                 <div class="mb-3">
@@ -52,38 +84,159 @@
                     </div>
                 </div>
 
-                <div class="payment-section mb-3">
-                    <h4>Payment Details</h4>
-                    <div class="mb-3">
-                        <label for="cardName" class="form-label">Name on Card</label>
-                        <input type="text" class="form-control" id="cardName" required>
+                <div class="mb-3">
+                    <label for="background" class="form-label">Tell us about your background and experience</label>
+                    <textarea class="form-control" id="background" rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="passion" class="form-label">What makes you passionate about this course?</label>
+                    <textarea class="form-control" id="passion" rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Do you have access to the following requirements?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hasComputer" required>
+                        <label class="form-check-label" for="hasComputer">
+                            I have access to a computer/laptop
+                        </label>
                     </div>
-                    <div class="mb-3">
-                        <label for="cardNumber" class="form-label">Card Number</label>
-                        <input type="text" class="form-control" id="cardNumber" required>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="expiry" class="form-label">Expiry Date</label>
-                            <input type="text" class="form-control" id="expiry" placeholder="MM/YY" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cvv" required>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="hasInternet" required>
+                        <label class="form-check-label" for="hasInternet">
+                            I have reliable internet access
+                        </label>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Complete Enrollment</button>
+                <div class="mb-3">
+                    <label for="commitment" class="form-label">Can you commit to the course timeline and requirements?</label>
+                    <select class="form-select" id="commitment" required>
+                        <option value="">Choose...</option>
+                        <option value="yes">Yes, I can fully commit</option>
+                        <option value="maybe">I might have some scheduling conflicts</option>
+                        <option value="no">No, I'm not sure about my availability</option>
+                    </select>
+                </div>                <div class="mb-3">
+                    <label for="studyHours" class="form-label">How many hours per week can you dedicate to studying?</label>
+                    <input type="number" class="form-control" id="studyHours" required min="1" max="168">
+                </div>
+
+                <div class="mb-3">
+                    <label for="timezone" class="form-label">What is your time zone?</label>
+                    <select class="form-select" id="timezone" required>
+                        <option value="">Choose...</option>
+                        <option value="SAST">South African Standard Time (SAST)</option>
+                        <option value="GMT">Greenwich Mean Time (GMT)</option>
+                        <option value="EST">Eastern Standard Time (EST)</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="preferredTime" class="form-label">What is your preferred study time?</label>
+                    <select class="form-select" id="preferredTime" required>
+                        <option value="">Choose...</option>
+                        <option value="morning">Morning (6AM - 12PM)</option>
+                        <option value="afternoon">Afternoon (12PM - 5PM)</option>
+                        <option value="evening">Evening (5PM - 10PM)</option>
+                        <option value="night">Night (10PM - 6AM)</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="onlineExperience" class="form-label">Do you have previous online learning experience?</label>
+                    <select class="form-select" id="onlineExperience" required>
+                        <option value="">Choose...</option>
+                        <option value="none">No previous experience</option>
+                        <option value="some">Some experience (1-2 courses)</option>
+                        <option value="experienced">Experienced (3+ courses)</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="englishProficiency" class="form-label">English Language Proficiency</label>
+                    <select class="form-select" id="englishProficiency" required>
+                        <option value="">Choose...</option>
+                        <option value="native">Native Speaker</option>
+                        <option value="fluent">Fluent</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="basic">Basic</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="learningStyle" class="form-label">What is your preferred learning style?</label>
+                    <select class="form-select" id="learningStyle" required>
+                        <option value="">Choose...</option>
+                        <option value="visual">Visual (videos, diagrams, charts)</option>
+                        <option value="reading">Reading and Writing</option>
+                        <option value="interactive">Interactive (hands-on exercises)</option>
+                        <option value="mixed">Mixed approach</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="goals" class="form-label">What are your goals for taking this course?</label>
+                    <textarea class="form-control" id="goals" rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Do you have any special requirements or accommodations needed?</label>
+                    <textarea class="form-control" id="specialRequirements" rows="2"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Discount Eligibility</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isStudent">
+                        <label class="form-check-label" for="isStudent">
+                            I am a student (15% discount with valid student card)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isGroupEnrollment">
+                        <label class="form-check-label" for="isGroupEnrollment">
+                            I am part of a group enrollment (3+ learners, 20% discount)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isNGO">
+                        <label class="form-check-label" for="isNGO">
+                            I represent an NGO/School (Custom pricing available)
+                        </label>
+                    </div>
+                    <div class="mt-2">
+                        <label for="discountEvidence" class="form-label">Upload evidence for discount (max 5MB - Student card/Group list/NGO registration)</label>
+                        <input type="file" class="form-control" id="discountEvidence" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="scholarshipInterest" class="form-label">Would you like to apply for a need-based scholarship?</label>
+                    <select class="form-select" id="scholarshipInterest" required>
+                        <option value="">Choose...</option>
+                        <option value="yes">Yes, I would like to apply</option>
+                        <option value="no">No, I do not need a scholarship</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 scholarship-reason" style="display: none;">
+                    <label for="scholarshipReason" class="form-label">Please explain why you should be considered for the scholarship</label>
+                    <textarea class="form-control" id="scholarshipReason" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Submit Application</button>
             </form>
         </div>
     </div>
 
     <div id="footer-container"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
     <script src="js/components.js"></script>
     <script src="js/enrollment.js"></script>
 </body>
