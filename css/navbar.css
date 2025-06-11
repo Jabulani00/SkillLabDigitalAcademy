@@ -1,7 +1,8 @@
 .navbar {
-    background: var(--glass-bg) !important;
-    backdrop-filter: blur(var(--blur-amount));
-    border-bottom: 1px solid var(--glass-border);
+    background: transparent !important;
+    backdrop-filter: none;
+    border-bottom: none;
+    position: relative;
 }
 
 .navbar-brand {

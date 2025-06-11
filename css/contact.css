@@ -87,31 +87,7 @@
             filter: brightness(1.1);
             transform: translateY(-2px);
             color: #fff;
-        }
-
-        .navbar {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(var(--blur-amount));
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-color) !important;
-        }
-
-        .nav-link {
-            color: var(--text-color) !important;
-            font-weight: 500;
-            transition: color var(--transition-speed) ease;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-color) !important;
-        }
-
-        /* Contact Page Specific Styles */
+        }        /* Contact Page Specific Styles */
         .contact-hero {
             padding: 120px 0 80px;
             text-align: center;

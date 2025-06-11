@@ -6,56 +6,22 @@
     <title>iSkill Academy - Courses & Pricing</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link href="css/course.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">   <link href="css/course.css" rel="stylesheet">    <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
-    <style>
-        /* Background Animation */
-        #bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-10px) scale(1.2);
-            }
-            100% {
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Course Icon Enhancement */
-        .course-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .course-card:hover .course-icon {
-            transform: scale(1.1);
-        }
-    </style>
+    <link href="css/home.css" rel="stylesheet">
 </head>
-<body>
-    <div class="bg-animation" id="bg-animation"></div>
+<body>    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="particle" style="left: 10%; animation-delay: 0s; width: 6px; height: 6px;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s; width: 4px; height: 4px;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s; width: 8px; height: 8px;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 6s; width: 5px; height: 5px;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 8s; width: 7px; height: 7px;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 10s; width: 4px; height: 4px;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 12s; width: 6px; height: 6px;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 14s; width: 5px; height: 5px;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 16s; width: 8px; height: 8px;"></div>
+    </div>
     <!-- Navigation -->
   <div id="navbar-container"></div>
     <!-- Hero Section -->
@@ -355,39 +321,9 @@
     </section>
 
     
-<div id="footer-container"></div>   
-    <!-- Bootstrap JS -->
+<div id="footer-container"></div>     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->    
-     <script src="js/components.js"></script>
-    <script>
-    // Create animated background particles
-    function createParticles() {
-        const container = document.getElementById('bg-animation');
-        const particleCount = 50;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            // Random size between 2px and 6px
-            const size = Math.random() * 4 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            
-            // Random position
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            
-            // Random animation duration between 15s and 25s
-            const duration = Math.random() * 10 + 15;
-            particle.style.animationDuration = duration + 's';
-            
-            container.appendChild(particle);
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', createParticles);
-    </script>
+    <script src="js/components.js"></script>
     </body>
 </html>

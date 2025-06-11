@@ -253,14 +253,4 @@ body {
     color: white;
 }
 
-.bg-pattern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.1;
-    z-index: -1;
-    background: linear-gradient(45deg, transparent 45%, var(--glass-border) 45%, var(--glass-border) 55%, transparent 55%);
-    background-size: 20px 20px;
-}
+
