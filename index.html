@@ -30,7 +30,22 @@
         <div class="particle" style="left: 90%; animation-delay: 16s; width: 8px; height: 8px;"></div>
     </div>    <!-- Navigation Component -->
     <div id="navbar-container"></div>
-<br>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">            <div class="modal-content bg-dark">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">                    <video class="w-100" controls>
+                        <source src="assets/demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="container">
@@ -40,10 +55,10 @@
                     <h1 class="hero-title">Empowering Future <span style="background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Innovators</span></h1>
                     <p class="hero-subtitle">Master digital skills, software development, and AI prompt engineering through our comprehensive online academy. Join thousands of learners transforming their careers in the digital economy.</p>
                     <div class="d-flex gap-3 flex-wrap">
-                        <a href="#courses" class="button-primary">
+                        <a href="course.html" class="button-primary">
                             <i class="fas fa-rocket me-2"></i>Start Learning
                         </a>
-                        <a href="#about" class="btn btn-outline-light btn-lg rounded-pill">
+                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill" data-bs-toggle="modal" data-bs-target="#demoModal">
                             <i class="fas fa-play me-2"></i>Watch Demo
                         </a>
                     </div>
@@ -139,7 +154,7 @@
                         <div class="text-center">
                             <span class="badge bg-primary rounded-pill mb-2">12 Weeks</span>
                             <div>
-                                <a href="#enroll" class="button-primary">Learn More</a>
+                                <a href="course.html" class="button-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -159,7 +174,7 @@
                         <div class="text-center">
                             <span class="badge bg-primary rounded-pill mb-2">6 Weeks</span>
                             <div>
-                                <a href="#enroll" class="button-primary">Learn More</a>
+                                <a href="course.html" class="button-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -179,7 +194,7 @@
                         <div class="text-center">
                             <span class="badge bg-primary rounded-pill mb-2">6 Weeks</span>
                             <div>
-                                <a href="#enroll" class="button-primary">Learn More</a>
+                                <a href="course.html" class="button-primary">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -235,7 +250,7 @@
                 <h2 class="display-5 fw-bold mb-3">Ready to Transform Your Future?</h2>
                 <p class="lead mb-4">Join thousands of students who are already building their digital careers with iSkill Academy</p>
                 <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="#" class="button-primary btn-lg">
+                    <a href="course.html" class="button-primary btn-lg">
                         <i class="fas fa-play me-2"></i>Start Your Journey
                     </a>
                     <a href="contact.html" class="btn btn-outline-light btn-lg rounded-pill">
@@ -249,5 +264,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="js/components.js"></script>
+    <script>
+        const demoModal = document.getElementById('demoModal');
+        const video = demoModal.querySelector('video');
+        
+        demoModal.addEventListener('shown.bs.modal', () => {
+            video.play();
+        });
+        
+        demoModal.addEventListener('hidden.bs.modal', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    </script>
 </body>
 </html>
