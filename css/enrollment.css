@@ -95,3 +95,52 @@ h2, h3, h4 {
     transform: translateY(-2px);
     color: #fff;
 }
+
+
+.course-selection {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.course-selection h4 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.course-selection .form-select {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-weight: 500;
+}
+
+.course-selection .form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.course-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    border-left: 4px solid #007bff;
+}
+
+.course-info h3 {
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.course-info p {
+    color: #6c757d;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.price-highlight {
+    color: #28a745 !important;
+    font-weight: 600;
+}

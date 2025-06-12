@@ -1,0 +1,97 @@
+
+# Robots.txt for iSkill Academy
+# Website: https://i-skill-academy.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://i-skill-academy.vercel.app/sitemap.xml
+
+# Disallow unnecessary files and directories
+Disallow: /css/
+Disallow: /js/
+Disallow: /assets/temp/
+Disallow: /admin/
+Disallow: /config/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.txt$
+Disallow: /README.md
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Allow important assets
+Allow: /assets/logo.png
+Allow: /assets/favicon.ico
+Allow: /assets/og-image.jpg
+Allow: /assets/*.jpg
+Allow: /assets/*.png
+Allow: /assets/*.svg
+
+# Block specific crawlers if needed (uncomment if necessary)
+# User-agent: AhrefsBot
+# Disallow: /
+
+# User-agent: MJ12bot
+# Disallow: /
+
+# Crawl-delay for aggressive bots
+User-agent: Bingbot
+Crawl-delay: 10
+
+User-agent: Slurp
+Crawl-delay: 10
+
+# Google-specific directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Mobile Googlebot
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /images/
+
+# Allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Block access to development and testing files
+Disallow: /test/
+Disallow: /dev/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /backup/
+Disallow: /temp/
+Disallow: /cache/
+
+# Block access to sensitive directories
+Disallow: /includes/
+Disallow: /logs/
+Disallow: /private/
+Disallow: /database/
+
+# Allow access to important pages
+Allow: /index.html
+Allow: /course.html
+Allow: /about.html
+Allow: /services.html
+Allow: /contact.html
+Allow: /enroll.html
+
+# Clean URLs (if using URL rewriting)
+Allow: /courses/
+Allow: /blog/
+Allow: /resources/

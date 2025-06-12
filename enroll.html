@@ -10,17 +10,34 @@
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
     <link href="css/enrollment.css" rel="stylesheet">
+
+     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
 </head>
 <body>
     <div id="navbar-container"></div>
 
     <div class="container mt-5">
         <div class="enrollment-container">
-            <h2 class="text-center mb-4">Course Enrollment</h2>
-            <div class="course-info mb-4">
-                <h3 id="selected-course">Selected Course: </h3>
-                <p id="course-price">Price: </p>
-            </div>
+            <div class="course-selection">
+    <h4><i class="fas fa-graduation-cap me-2"></i>Select Your Course</h4>
+    <select class="form-select" id="courseSelection">
+        <option value="">Choose a course to enroll in...</option>
+        <option value="Level 1: Basic IT & Digital Literacy|R500">Level 1: Basic IT & Digital Literacy - R500</option>
+        <option value="Level 2: Software Development|R1,200">Level 2: Software Development - R1,200</option>
+        <option value="Level 3: AI & Prompt Engineering|R900">Level 3: AI & Prompt Engineering - R900</option>
+        <option value="Level 4: Low-Code & Automation|R900">Level 4: Low-Code & Automation - R900</option>
+        <option value="Tech Starter Bundle (Level 1 + Level 2)|R1,500">Tech Starter Bundle (Level 1 + Level 2) - R1,500</option>
+        <option value="AI Innovator Bundle (Level 3 + Level 4)|R1,500">AI Innovator Bundle (Level 3 + Level 4) - R1,500</option>
+        <option value="All-In Master Track (All 4 Levels)|R2,900">All-In Master Track (All 4 Levels) - R2,900</option>
+    </select>
+</div>
+
+<div class="course-info mb-4">
+    <h3 id="selected-course"><i class="fas fa-book me-2"></i>Selected Course: <span class="text-muted">Please select a course above</span></h3>
+    <p id="course-price"><i class="fas fa-tag me-2"></i>Price: <span class="text-muted">-</span></p>
+</div>
               <form id="enrollmentForm" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">

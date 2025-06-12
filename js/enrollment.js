@@ -13,16 +13,57 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Course selection elements
+    const courseSelection = document.getElementById('courseSelection');
+    const selectedCourseDisplay = document.getElementById('selected-course');
+    const coursePriceDisplay = document.getElementById('course-price');
+    const enrollmentForm = document.getElementById('enrollmentForm');
+    
     // Get course details from URL parameters
     const params = new URLSearchParams(window.location.search);
-    const courseName = decodeURIComponent(params.get('course') || '');
-    const coursePrice = params.get('price');
+    let courseName = decodeURIComponent(params.get('course') || '');
+    let coursePrice = params.get('price');
     let discountEvidenceData = null; // Temporary storage for discount evidence
 
-    // Update course info in the form
+    // Handle course selection based on how user accessed the page
     if (courseName && coursePrice) {
-        document.getElementById('selected-course').textContent = `Selected Course: ${courseName}`;
-        document.getElementById('course-price').textContent = `Price: R${coursePrice}`;
+        // User came from course page with parameters
+        document.querySelector('.course-selection').style.display = 'none';
+        selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-primary">${courseName}</span>`;
+        coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="price-highlight">R${coursePrice}</span>`;
+    } else {
+        // User came directly to enrollment page
+        courseSelection.addEventListener('change', function() {
+            const selectedValue = this.value;
+            
+            if (selectedValue) {
+                const [selectedCourseName, selectedCoursePrice] = selectedValue.split('|');
+                courseName = selectedCourseName;
+                coursePrice = selectedCoursePrice.replace('R', ''); // Remove R prefix for consistency
+                
+                selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-primary">${courseName}</span>`;
+                coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="price-highlight">${selectedCoursePrice}</span>`;
+                
+                // Enable the form
+                enrollmentForm.style.opacity = '1';
+                enrollmentForm.style.pointerEvents = 'auto';
+            } else {
+                courseName = '';
+                coursePrice = '';
+                selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-muted">Please select a course above</span>`;
+                coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="text-muted">-</span>`;
+                
+                // Disable the form
+                enrollmentForm.style.opacity = '0.6';
+                enrollmentForm.style.pointerEvents = 'none';
+            }
+        });
+
+        // Initially disable the form until a course is selected
+        enrollmentForm.style.opacity = '0.6';
+        enrollmentForm.style.pointerEvents = 'none';
+        selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-muted">Please select a course above</span>`;
+        coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="text-muted">-</span>`;
     }
 
     // Handle photo upload and preview with size limit
@@ -127,9 +168,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission
-    const enrollmentForm = document.getElementById('enrollmentForm');
     enrollmentForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+
+        // Check if course is selected (for direct access users)
+        if (!courseName || !coursePrice) {
+            alert('Please select a course before submitting your application.');
+            return;
+        }
 
         // Basic form validation
         if (!enrollmentForm.checkValidity()) {
