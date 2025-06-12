@@ -10,6 +10,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Lottie Player -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <!-- Custom CSS -->
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
@@ -27,18 +29,16 @@
         <div class="particle" style="left: 80%; animation-delay: 14s; width: 5px; height: 5px;"></div>
         <div class="particle" style="left: 90%; animation-delay: 16s; width: 8px; height: 8px;"></div>
     </div>    <!-- Navigation Component -->
-    <div id="navbar-container"></div>
-
-    <!-- Page Header -->
+    <div id="navbar-container"></div>    <!-- Page Header -->
     <section class="page-header">
+        <div id="lottie-container" style="width: 300px; height: 300px; margin: 0 auto;"></div>
         <div class="container">
             <h1 class="page-title">About <span style="background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">iSkill Academy</span></h1>
             <p class="page-subtitle">Transforming lives through innovative digital education and empowering the next generation of tech innovators across Africa and beyond.</p>
         </div>
     </section>
 
-    <!-- Mission & Vision -->
-    <section class="py-5">
+    <!-- Mission & Vision -->    <section class="py-5">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-6">
@@ -59,8 +59,7 @@
         </div>
     </section>
 
-    <!-- Core Values -->
-    <section class="py-5">
+    <!-- Core Values -->    <section class="py-5">
         <div class="container">
             <h2 class="section-title">Our Core Values</h2>
             <div class="row g-4">
@@ -304,9 +303,17 @@
         </div>
     </section>    <!-- Footer Component -->
     <div id="footer-container"></div>    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->    <script src="js/components.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>    <!-- Custom JS -->    <script src="js/components.js"></script>
     <script>
+        // Initialize single Lottie animation
+        let animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'assets/Animation - 1749714570651.json'
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -369,7 +376,5 @@
             }
         });
     </script>
-</body>
-</html>
 </body>
 </html>
