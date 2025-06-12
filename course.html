@@ -66,6 +66,8 @@
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
 <body>    <!-- Animated Background -->
     <div class="bg-animation">
@@ -124,7 +126,9 @@
                 <!-- Level 1: Basic IT -->                <div class="col-lg-6 col-xl-3">
                     <div class="course-card glass-card fade-in">
                         <div class="course-icon">
-                            <i class="fas fa-laptop-code"></i>
+                            <div class="course-icon">
+    <div id="it-course-animation" class="lottie-animation"></div>
+</div>
                         </div>
                         <h3 class="course-title">Level 1: Basic IT & Digital Literacy</h3>
                         <span class="course-duration">4 Weeks</span>
@@ -145,7 +149,9 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="course-card fade-in">
                         <div class="course-icon">
-                            <i class="fas fa-code"></i>
+                            <div class="course-icon">
+    <div id="software-course-animation" class="lottie-animation"></div>
+</div>
                         </div>
                         <h3 class="course-title">Level 2: Software Development</h3>
                         <span class="course-duration">12 Weeks</span>
@@ -167,7 +173,9 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="course-card fade-in">
                         <div class="course-icon">
-                            <i class="fas fa-robot"></i>
+                            <div class="course-icon">
+    <div id="ai-course-animation" class="lottie-animation"></div>
+</div>
                         </div>
                         <h3 class="course-title">Level 3: AI & Prompt Engineering</h3>
                         <span class="course-duration">6 Weeks</span>
@@ -189,7 +197,9 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="course-card fade-in">
                         <div class="course-icon">
-                            <i class="fas fa-cogs"></i>
+                            <div class="course-icon">
+    <div id="automation-course-animation" class="lottie-animation"></div>
+</div>
                         </div>
                         <h3 class="course-title">Level 4: Low-Code & Automation</h3>
                         <span class="course-duration">6 Weeks</span>
@@ -383,83 +393,78 @@
     <!-- Custom JS -->    
     <script src="js/components.js"></script>
       <script>
-        const demoModal = document.getElementById('demoModal');
-        const video = demoModal.querySelector('video');
-        
-        demoModal.addEventListener('shown.bs.modal', () => {
-            video.play();
-        });
-        
-        demoModal.addEventListener('hidden.bs.modal', () => {
-            video.pause();
-            video.currentTime = 0;
-        });
-        
-        // Initialize Lottie animations
-        const itAnimation = lottie.loadAnimation({
-            container: document.getElementById('it-animation'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/IT.json'
-        });
+// Wait for DOM and Lottie to be ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Add a small delay to ensure elements are rendered
+    setTimeout(function() {
+        // Check if elements exist before initializing
+        const itContainer = document.getElementById('it-course-animation');
+        const softwareContainer = document.getElementById('software-course-animation');
+        const aiContainer = document.getElementById('ai-course-animation');
+        const automationContainer = document.getElementById('automation-course-animation');
 
-        const softwareAnimation = lottie.loadAnimation({
-            container: document.getElementById('software-animation'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/Software.json'
-        });
+        if (itContainer) {
+            const itCourseAnimation = lottie.loadAnimation({
+                container: itContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'assets/IT.json'
+            });
+            
+            itCourseAnimation.addEventListener('data_failed', function() {
+                console.error('Failed to load IT animation');
+                // Fallback to Font Awesome icon
+                itContainer.innerHTML = '<i class="fas fa-laptop-code" style="font-size: 3rem; color: #007bff;"></i>';
+            });
+        }
 
-        const aiAnimation = lottie.loadAnimation({
-            container: document.getElementById('ai-animation'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/AI.json'
-        });
+        if (softwareContainer) {
+            const softwareCourseAnimation = lottie.loadAnimation({
+                container: softwareContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'assets/Software.json'
+            });
+            
+            softwareCourseAnimation.addEventListener('data_failed', function() {
+                console.error('Failed to load Software animation');
+                softwareContainer.innerHTML = '<i class="fas fa-code" style="font-size: 3rem; color: #28a745;"></i>';
+            });
+        }
 
-        const automationAnimation = lottie.loadAnimation({
-            container: document.getElementById('automation-animation'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/AUTOMATION.json'
-        });
+        if (aiContainer) {
+            const aiCourseAnimation = lottie.loadAnimation({
+                container: aiContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'assets/AI.json'
+            });
+            
+            aiCourseAnimation.addEventListener('data_failed', function() {
+                console.error('Failed to load AI animation');
+                aiContainer.innerHTML = '<i class="fas fa-robot" style="font-size: 3rem; color: #ffc107;"></i>';
+            });
+        }
 
-        // Hero section animations
-        const heroSoftware = lottie.loadAnimation({
-            container: document.getElementById('hero-software'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/Software.json'
-        });
-
-        const heroAi = lottie.loadAnimation({
-            container: document.getElementById('hero-ai'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/AI.json'
-        });
-
-        const heroIt = lottie.loadAnimation({
-            container: document.getElementById('hero-it'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/IT.json'
-        });
-
-        const heroAutomation = lottie.loadAnimation({
-            container: document.getElementById('hero-automation'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'assets/AUTOMATION.json'
-        });
-    </script>
+        if (automationContainer) {
+            const automationCourseAnimation = lottie.loadAnimation({
+                container: automationContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'assets/AUTOMATION.json'
+            });
+            
+            automationCourseAnimation.addEventListener('data_failed', function() {
+                console.error('Failed to load Automation animation');
+                automationContainer.innerHTML = '<i class="fas fa-cogs" style="font-size: 3rem; color: #6f42c1;"></i>';
+            });
+        }
+    }, 100);
+});
+</script>
     </body>
 </html>
