@@ -13,163 +13,83 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Course selection elements
-    const courseSelection = document.getElementById('courseSelection');
-    const selectedCourseDisplay = document.getElementById('selected-course');
-    const coursePriceDisplay = document.getElementById('course-price');
-    const enrollmentForm = document.getElementById('enrollmentForm');
-    
-    // Get course details from URL parameters
+    const courseMapping = {
+        'quickstart': { name: 'Quick Start', price: '1800', duration: '8 weeks' },
+        'developer': { name: 'Developer Track', price: '2400', duration: '12 weeks' },
+        'pro': { name: 'Professional', price: '2900', duration: '16 weeks' },
+        'enterprise': { name: 'Enterprise', price: '3400', duration: '20 weeks' },
+        'environment': { name: 'Development Environment', price: '500', duration: '2 weeks' },
+        'ai': { name: 'AI Integration', price: '900', duration: '4 weeks' },
+        'rapid': { name: 'Rapid Development', price: '900', duration: '4 weeks' }
+    };
+
+    // Get bundle/course and price from URL parameters
     const params = new URLSearchParams(window.location.search);
-    let courseName = decodeURIComponent(params.get('course') || '');
-    let coursePrice = params.get('price');
-    let discountEvidenceData = null; // Temporary storage for discount evidence
+    const bundle = params.get('bundle');
+    const price = params.get('price');
 
-    // Handle course selection based on how user accessed the page
-    if (courseName && coursePrice) {
-        // User came from course page with parameters
+    // Set initial course selection based on bundle parameter
+    if (bundle && courseMapping[bundle]) {
+        const course = courseMapping[bundle];
+        
+        // Hide course selection if coming from a specific bundle
         document.querySelector('.course-selection').style.display = 'none';
-        selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-primary">${courseName}</span>`;
-        coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="price-highlight">R${coursePrice}</span>`;
-    } else {
-        // User came directly to enrollment page
-        courseSelection.addEventListener('change', function() {
-            const selectedValue = this.value;
-            
-            if (selectedValue) {
-                const [selectedCourseName, selectedCoursePrice] = selectedValue.split('|');
-                courseName = selectedCourseName;
-                coursePrice = selectedCoursePrice.replace('R', ''); // Remove R prefix for consistency
-                
-                selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-primary">${courseName}</span>`;
-                coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="price-highlight">${selectedCoursePrice}</span>`;
-                
-                // Enable the form
-                enrollmentForm.style.opacity = '1';
-                enrollmentForm.style.pointerEvents = 'auto';
-            } else {
-                courseName = '';
-                coursePrice = '';
-                selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-muted">Please select a course above</span>`;
-                coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="text-muted">-</span>`;
-                
-                // Disable the form
-                enrollmentForm.style.opacity = '0.6';
-                enrollmentForm.style.pointerEvents = 'none';
-            }
-        });
-
-        // Initially disable the form until a course is selected
-        enrollmentForm.style.opacity = '0.6';
-        enrollmentForm.style.pointerEvents = 'none';
-        selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-muted">Please select a course above</span>`;
-        coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="text-muted">-</span>`;
+        
+        // Update displays
+        const selectedCourseDisplay = document.getElementById('selected-course');
+        const coursePriceDisplay = document.getElementById('course-price');
+        
+        selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-primary">${course.name} (${course.duration})</span>`;
+        coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="price-highlight">R${course.price}</span>`;
+        
+        // Store values for form submission
+        window.selectedCourse = {
+            name: course.name,
+            price: course.price,
+            duration: course.duration
+        };
+        
+        // Enable the form
+        const enrollmentForm = document.getElementById('enrollmentForm');
+        enrollmentForm.style.opacity = '1';
+        enrollmentForm.style.pointerEvents = 'auto';
     }
 
-    // Handle photo upload and preview with size limit
-    const photoInput = document.getElementById('photo');
-    const photoPreview = document.getElementById('photoPreview');
-    let photoData = null;
-
-    photoInput.addEventListener('change', async function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            if (file.size > 1 * 1024 * 1024) { // 1MB limit
-                alert('Profile photo must be less than 1MB');
-                this.value = '';
-                return;
-            }
+    // Course selection change handler
+    const courseSelection = document.getElementById('courseSelection');
+    courseSelection.addEventListener('change', function() {
+        const selectedValue = this.value;
+        const [courseName, coursePrice] = selectedValue.split('|');
+        
+        if (selectedValue) {
+            const selectedCourseDisplay = document.getElementById('selected-course');
+            const coursePriceDisplay = document.getElementById('course-price');
             
-            try {
-                const compressedImage = await compressImage(file);
-                photoData = compressedImage;
-                photoPreview.src = compressedImage;
-                photoPreview.style.display = 'block';
-            } catch (error) {
-                console.error('Error processing image:', error);
-                alert('Error processing image. Please try a different image.');
-                this.value = '';
-            }
-        }
-    });
-
-    // Handle scholarship reason visibility
-    const scholarshipSelect = document.getElementById('scholarshipInterest');
-    const scholarshipReason = document.querySelector('.scholarship-reason');
-    
-    scholarshipSelect.addEventListener('change', function() {
-        scholarshipReason.style.display = this.value === 'yes' ? 'block' : 'none';
-    });
-
-    // Handle discount evidence upload with size limit
-    const discountEvidence = document.getElementById('discountEvidence');
-    discountEvidence.addEventListener('change', async function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            if (file.size > 2 * 1024 * 1024) { // 2MB limit
-                alert('Evidence file must be less than 2MB');
-                this.value = '';
-                return;
-            }
+            selectedCourseDisplay.innerHTML = `<i class="fas fa-book me-2"></i>Selected Course: <span class="text-primary">${courseName}</span>`;
+            coursePriceDisplay.innerHTML = `<i class="fas fa-tag me-2"></i>Price: <span class="price-highlight">R${coursePrice}</span>`;
             
-            try {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    discountEvidenceData = e.target.result;
-                };
-                reader.onerror = function() {
-                    alert('Error reading file. Please try again.');
-                    this.value = '';
-                };
-                reader.readAsDataURL(file);
-            } catch (error) {
-                console.error('Error reading file:', error);
-                alert('Error processing file. Please try again.');
-                this.value = '';
-            }
-        }
-    });
-
-    // Image compression function
-    async function compressImage(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
-                    
-                    // Calculate new dimensions
-                    const maxDim = 800;
-                    if (width > height && width > maxDim) {
-                        height *= maxDim / width;
-                        width = maxDim;
-                    } else if (height > maxDim) {
-                        width *= maxDim / height;
-                        height = maxDim;
-                    }
-                    
-                    canvas.width = width;
-                    canvas.height = height;
-                    
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    resolve(canvas.toDataURL('image/jpeg', 0.7));
-                };
-                img.onerror = reject;
-                img.src = e.target.result;
+            // Store values for form submission
+            window.selectedCourse = {
+                name: courseName,
+                price: coursePrice
             };
-            reader.onerror = reject;
-            reader.readAsDataURL(file);
-        });
-    }
+            
+            // Enable form
+            const enrollmentForm = document.getElementById('enrollmentForm');
+            enrollmentForm.style.opacity = '1';
+            enrollmentForm.style.pointerEvents = 'auto';
+        }
+    });
 
-    // Form submission
+    // Update form submission to use stored course values
+    const enrollmentForm = document.getElementById('enrollmentForm');
     enrollmentForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+        
+        if (!window.selectedCourse) {
+            alert('Please select a course before submitting.');
+            return;
+        }
 
         // Check if course is selected (for direct access users)
         if (!courseName || !coursePrice) {
@@ -191,6 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        const finalPrice = calculateDiscount(parseInt(coursePrice));
+        
         try {
             const formData = {
                 firstName: document.getElementById('firstName').value,
@@ -202,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 gender: document.getElementById('gender').value,
                 nationality: document.getElementById('nationality').value,
                 course: courseName,
-                price: coursePrice,
+                originalPrice: parseInt(coursePrice),
+                finalPrice: finalPrice,
                 enrollmentDate: new Date(),
                 status: 'pending_review',
                 profilePhoto: photoData,

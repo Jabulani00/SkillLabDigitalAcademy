@@ -23,18 +23,24 @@
     <div class="container mt-5">
         <div class="enrollment-container">
             <div class="course-selection">
-    <h4><i class="fas fa-graduation-cap me-2"></i>Select Your Course</h4>
-    <select class="form-select" id="courseSelection">
-        <option value="">Choose a course to enroll in...</option>
-        <option value="Level 1: Basic IT & Digital Literacy|R500">Level 1: Basic IT & Digital Literacy - R500</option>
-        <option value="Level 2: Software Development|R1,200">Level 2: Software Development - R1,200</option>
-        <option value="Level 3: AI & Prompt Engineering|R900">Level 3: AI & Prompt Engineering - R900</option>
-        <option value="Level 4: Low-Code & Automation|R900">Level 4: Low-Code & Automation - R900</option>
-        <option value="Tech Starter Bundle (Level 1 + Level 2)|R1,500">Tech Starter Bundle (Level 1 + Level 2) - R1,500</option>
-        <option value="AI Innovator Bundle (Level 3 + Level 4)|R1,500">AI Innovator Bundle (Level 3 + Level 4) - R1,500</option>
-        <option value="All-In Master Track (All 4 Levels)|R2,900">All-In Master Track (All 4 Levels) - R2,900</option>
-    </select>
-</div>
+        <h4><i class="fas fa-graduation-cap me-2"></i>Select Your Course</h4>
+        <select class="form-select" id="courseSelection">
+            <option value="">Choose your learning path...</option>
+            <!-- Main Bundles -->
+            <optgroup label="Complete Learning Paths">
+                <option value="Quick Start|1800">Quick Start Bundle - R1,800 (8 weeks)</option>
+                <option value="Developer Track|2400">Developer Track - R2,400 (12 weeks)</option>
+                <option value="Professional|2900">Professional Bundle - R2,900 (16 weeks)</option>
+                <option value="Enterprise|3400">Enterprise Bundle - R3,400 (20 weeks)</option>
+            </optgroup>
+            <!-- Individual Courses -->
+            <optgroup label="Specialized Courses">
+                <option value="Development Environment|500">Development Environment Mastery - R500 (2 weeks)</option>
+                <option value="AI Integration|900">AI Integration for Developers - R900 (4 weeks)</option>
+                <option value="Rapid Development|900">Rapid Development & Design - R900 (4 weeks)</option>
+            </optgroup>
+        </select>
+    </div>
 
 <div class="course-info mb-4">
     <h3 id="selected-course"><i class="fas fa-book me-2"></i>Selected Course: <span class="text-muted">Please select a course above</span></h3>
