@@ -1,61 +1,79 @@
 <!-- SITEMAP.XML - Place this file in your root directory -->
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
     <!-- Homepage - Highest Priority -->
     <url>
-        <loc>https://i-skill-academy.vercel.app/</loc>
+        <loc>https://www.iskillacademy.co.za/</loc>
         <lastmod>2025-06-12</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.iskillacademy.co.za/assets/logo.png</image:loc>
+            <image:title>iSkill Academy Logo</image:title>
+        </image:image>
     </url>
 
     <!-- Main Navigation Pages -->
     <url>
-        <loc>https://i-skill-academy.vercel.app/index.html</loc>
+        <loc>https://www.iskillacademy.co.za/index.html</loc>
         <lastmod>2025-06-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://i-skill-academy.vercel.app/course.html</loc>
+        <loc>https://www.iskillacademy.co.za/course.html</loc>
         <lastmod>2025-06-12</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.iskillacademy.co.za/course.html"/>
+    </url>
+
+    <!-- Individual Course Pages -->
+    <url>
+        <loc>https://www.iskillacademy.co.za/components/SoftwareDevelopment.html</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://i-skill-academy.vercel.app/about.html</loc>
+        <loc>https://www.iskillacademy.co.za/about.html</loc>
         <lastmod>2025-06-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://i-skill-academy.vercel.app/services.html</loc>
+        <loc>https://www.iskillacademy.co.za/services.html</loc>
         <lastmod>2025-06-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://i-skill-academy.vercel.app/contact.html</loc>
+        <loc>https://www.iskillacademy.co.za/contact.html</loc>
         <lastmod>2025-06-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>https://i-skill-academy.vercel.app/enroll.html</loc>
+        <loc>https://www.iskillacademy.co.za/enroll.html</loc>
         <lastmod>2025-06-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-   
+    <!-- Corporate Training -->
+    <url>
+        <loc>https://www.iskillacademy.co.za/corporate-training.html</loc>
+        <lastmod>2025-06-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
 </urlset>
